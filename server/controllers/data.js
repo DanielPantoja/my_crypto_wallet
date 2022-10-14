@@ -1,24 +1,22 @@
 const CoinGecko = require('coingecko-api');
 const CoinGeckoClient = new CoinGecko();
+const mongoose = require('mongoose');
+require('../models/user');//not sure if this is needed
+const User = mongoose.model('User');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
 
 module.exports = {
 
     testApi: (req, res) => {
         CoinGeckoClient.global().then(data => {
             return res.json({ response: data['data'] })
-            // return res.json({ marketCap: data['data']['active_cryptocurrencies'] })
-            // return res.json({ marketCap: data['data'].active_cryptocurrencies })
-            // return res.json({ marketCap: data['data.active_cryptocurrencies'] })
-
-            // active_cryptocurrencies
         })
     },
     secondApiTest: (req, res) => {
         CoinGeckoClient.coins.all().then(data => {
-            // console.log(data)
-            // return res.json({ response: data})
             return res.json({ response: data['data']})
-            // return res.json({ response: data['message'] })
         })
     },
     login: (req, res) => {
@@ -33,7 +31,6 @@ module.exports = {
             })
             .then(result => {
                 if (!result) {
-                    console.log('something went wrong here')
                     return res.status(404).json({ message: 'Invalid Credentialss' })
                 }
                 const token = jwt.sign(
@@ -41,7 +38,6 @@ module.exports = {
                     process.env.JWT_KEY,
                     { expiresIn: "1h" }
                 );
-                console.log(token)
                 return res.status(200).json({ token: token, expiresIn: 3600, userId: fetchedUser._id });
             })
             .catch(err => {
@@ -50,7 +46,8 @@ module.exports = {
                 return res.status(404).json({ message: 'Invalid Credentials', error: err })
             });
     },
-    signUp: (req, res) => {            User.find({ email: req.body.email })
+    signUp: (req, res) => {            
+        User.find({ email: req.body.email })
                 .exec()
                 .then(user => {
                     if (user.length >= 1) {//need to test this to make sure it doesnt crash app
@@ -79,6 +76,7 @@ module.exports = {
                                         return res.status(200).json({ token: token, expiresIn: 3600, userId: user._id })
                                     })
                                     .catch(err => {
+                                        console.log(err)
                                         return res.status(404).json({ message: 'Internal database error, sorry', error: err.errors })
                                     }
                                 )
@@ -87,6 +85,7 @@ module.exports = {
                     }
                 })
                 .catch(err => {
+                    console.log(err)
                     return res.status(404).json({ message: 'Internal database error, cannot find User', error: err.errors })
                 })
             }
