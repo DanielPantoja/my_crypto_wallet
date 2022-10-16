@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const CoinGecko = require('coingecko-api');
 const CoinGeckoClient = new CoinGecko();
 const mongoose = require('mongoose');
@@ -100,5 +101,10 @@ module.exports = {
         .catch(err => {
             console.log('someting went wrong')
         })
+=======
+module.exports = {
+    testApi: (req, res) => {
+        return res.json({ message: 'this is the response feedback' })
+>>>>>>> 42941a0 (added controller and routes)
     }
 }
