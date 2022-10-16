@@ -1,10 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
-const CoinGecko = require('coingecko-api');
-const CoinGeckoClient = new CoinGecko();
-
-
 const app = express();
 const path = require("path");
 app.use(express.json());
@@ -19,14 +14,4 @@ app.use((req, res, next) => {
 // app.use((req, res, next) => {
 //     res.sendFile(path.join(__dirname, '../../public/src/index.html'));
 // });
-
-
-// var func = async() => {
-//     let data = await CoinGeckoClient.ping();
-//     console.log(data)
-//     return data;
-//   };
-// console.log('COIN GECKO', func)
-
-
 module.exports = app;

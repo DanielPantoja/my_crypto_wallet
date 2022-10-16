@@ -1,21 +1,16 @@
-const CoinGeckoClient = require('../backend/app');
+const CoinGecko = require('coingecko-api');
+const CoinGeckoClient = new CoinGecko();
 
 module.exports = {
-    // testApi: (req, res) => {
-    //     return res.json({ message: 'this is the response feedback' })
-    // },
 
     testApi: (req, res) => {
-        // let data = await CoinGeckoClient.ping();
-        // return res.json({message: data})
-
-        // await CoinGeckoClient.ping().then(data => {
-        //     return res.json({message: data})
-        // })
         CoinGeckoClient.ping().then(data => {
-            return res.json({res: data})
+            return res.json({ response: data, testObject: 'this is the value of the test object' })
         })
-        // let data = CoinGeckoClient.ping()
-        // return res.json({res: data})
+    },
+    secondApiTest: (req, res) => {
+        CoinGeckoClient.coins.all().then(data => {
+            return res.json({ response: data, testObject: 'this is the value of the test object' })
+        })
     }
 }
