@@ -88,5 +88,17 @@ module.exports = {
                     console.log(err)
                     return res.status(404).json({ message: 'Internal database error, cannot find User', error: err.errors })
                 })
-            }
+            },
+    addCoin: (req, res) => {
+        console.log("REQBODY", req.body)
+        CoinGeckoClient.coins.fetch(req.body.coin).then(coin => {
+            User.findByIdAndUpdate({ _id: req.body.userId }, { $push: { portfolio: coin }}).then(result => {
+                console.log('THIS WORKED FIRST TRY LETS GOOOOOOOO', result)
+            })
+
+        })
+        .catch(err => {
+            console.log('someting went wrong')
+        })
+    }
 }

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
+const PortfolioSchema = require('./portfolio')
 
 const UserSchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
@@ -13,6 +14,9 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: "Must have a password",
         minlength: [8, "Password must be atleast 8 charcters"]
+    },
+    portfolio: {
+        type: [PortfolioSchema]
     }
 });
 UserSchema.plugin(uniqueValidator);
