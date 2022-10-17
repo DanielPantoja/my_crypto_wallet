@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const CoinGecko = require('coingecko-api');
 const CoinGeckoClient = new CoinGecko();
 const mongoose = require('mongoose');
@@ -6,7 +5,6 @@ require('../models/user');//not sure if this is needed
 const User = mongoose.model('User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
 
 module.exports = {
 
@@ -96,15 +94,9 @@ module.exports = {
             User.findByIdAndUpdate({ _id: req.body.userId }, { $push: { portfolio: coin }}).then(result => {
                 console.log('THIS WORKED FIRST TRY LETS GOOOOOOOO', result)
             })
-
         })
         .catch(err => {
             console.log('someting went wrong')
         })
-=======
-module.exports = {
-    testApi: (req, res) => {
-        return res.json({ message: 'this is the response feedback' })
->>>>>>> 42941a0 (added controller and routes)
     }
 }

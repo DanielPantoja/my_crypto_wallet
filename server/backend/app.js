@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-<<<<<<< HEAD
 require('dotenv').config()
 
 mongoose.connect('mongodb+srv://Daniel:uvvmUirkdResPiEM@cluster0.yto1b.mongodb.net/my_crypto_wallet_db?retryWrites=true&w=majority' ,{ useNewUrlParser: true, useUnifiedTopology: true})
@@ -17,9 +16,6 @@ mongoose.connect('mongodb+srv://Daniel:uvvmUirkdResPiEM@cluster0.yto1b.mongodb.n
     console.log(err)
     console.log("Connection to database failed")
 });
-
-=======
->>>>>>> 42941a0 (added controller and routes)
 require('./routes')(app);
 app.use('/', express.static( path.join(__dirname, '../../public/dist/public') ));
 app.use((req, res, next) => {
