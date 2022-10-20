@@ -1,0 +1,11 @@
+<nav>
+    <div class="container" (click)='routeHome()'>
+        <img class='header-icon' src="../../assets/wallet-icon.png" alt="wallet-icon">
+        <h1>My Crypto Wallet</h1>
+    </div>
+    <p [routerLink]="['/portfolio']">Portfolio</p>
+    <p *ngIf="!userIsAuthenticated" (click)=openLogin()>Login</p>
+    <p *ngIf="!userIsAuthenticated" (click)=openSignUp()>Sign Up</p>
+    <p *ngIf="userIsAuthenticated" (click)=onLogOut()>LogOut</p>
+</nav>
+<hr>

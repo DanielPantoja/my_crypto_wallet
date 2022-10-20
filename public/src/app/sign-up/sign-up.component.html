@@ -1,0 +1,15 @@
+<div class="main">
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close id="closeBtn">X</button>
+    </div>
+    <h1 mat-dialog-title>Sign up and track your favorite coins easily🚀</h1>
+    <div mat-dialog-content>
+        <form (submit)='signUp(signupForm)' #signupForm='ngForm'>
+            <label for="email">Email</label>
+            <input type="email" id="email"name="email" ngModel required >
+            <label for="password">Password</label>
+            <input type="password" type="password"id="password"name="password" ngModel required>
+            <button class='submit' type="submit">Enter</button>
+        </form>
+    </div>
+</div>

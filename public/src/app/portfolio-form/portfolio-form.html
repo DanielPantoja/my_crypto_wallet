@@ -1,0 +1,22 @@
+<div class="main">
+    <div class="main-header">
+        <h1 mat-dialog-title>Add Coin to Portfolio</h1>
+        <div mat-dialog-actions>
+            <button mat-button mat-dialog-close (click)='closeForm()'>X</button>
+        </div>
+    </div>
+    <div mat-dialog-content>
+        <form (submit)='addCoin(coinForm)' #coinForm='ngForm'>
+            <label for="coins">Coin</label>
+            <select ngModel name="coins" id="coins">
+                <option *ngFor='let c of coins' ngModel type='text' value='{{c}}' name='sample' #sampleInput='ngModel' sample>{{c}}</option>
+            </select>
+            <label for="Quantity">Quantity</label>
+            <input name='Quantity'type="number" placeholder="0" min="0">
+            <button class='submit' type="submit">Enter</button>
+        </form>
+    </div>
+</div>
+<div *ngFor='let f of favoriteCoins'>
+<p>{{f}}</p>
+</div>

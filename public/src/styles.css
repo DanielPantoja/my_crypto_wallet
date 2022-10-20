@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol!important;
+}
+html,body {
+    height: 100%;
+}
+body{
+    margin: 0;
+}
+div{
+    margin: auto;
+}
+/* .cdk-overlay-container{
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+} */
+html, body { height: 100%; }
+body { margin: 0; 
+    /* font-family: Roboto, "Helvetica Neue", sans-serif;  */
+}
+
+p{
+    margin: 0!important;
+}
+.mat-dialog-container{
+    background: #181818;
+    border: 1px solid rgba(238, 238, 238);
+    border-radius: 1px;
+}

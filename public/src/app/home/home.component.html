@@ -1,0 +1,68 @@
+<!-- <nav>
+    <div class="container" (click)='routeHome()'>
+        <img class='header-icon' src="../../assets/wallet-icon.png" alt="wallet-icon">
+        <h1>My Crypto Wallet</h1>
+    </div>
+    <p [routerLink]="['/portfolio']">Portfolio</p>
+    <p *ngIf="!userIsAuthenticated" (click)=openLogin()>Login</p>
+    <p *ngIf="!userIsAuthenticated" (click)=openSignUp()>Sign Up</p>
+    <p *ngIf="userIsAuthenticated" (click)=onLogOut()>LogOut</p>
+</nav>
+<hr> -->
+<h2>Cryptocurrency Prices by Market Cap</h2>
+<p>The global cryptocurrency market cap today is ${{
+    marketCap.response.data.total_market_cap.usd.toLocaleString("en-US").slice(0, -1) }} a
+    <span [ngClass]="marketCap.response.data.market_cap_change_percentage_24h_usd > 0 ? 'green': 'red' ">{{
+        marketCap.response.data.market_cap_change_percentage_24h_usd | number : '1.1-1' }}%</span> change in the last 24
+    hours.
+</p>
+<!-- <p>'MARKETCAP'{{ marketCap.response.data.total_market_cap.usdtoLocaleString("en-US") }}</p> -->
+<!-- 
+<p>'MARKETCAP.DATA'{{ marketCap.data }}</p>
+<p>'MARKETCAP.MARKETS'{{ marketCap.markets }}</p> -->
+<!-- <p>'MARKETCAP.DATA.MARKETS'{{ marketCap.data.markets }}</p> -->
+
+<table>
+    <thead class="labelHead">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Coin</th>
+            <th scope="col">Price</th>
+            <th scope="col">1hr</th>
+            <th scope="col">24hr</th>
+            <th scope="col">7d</th>
+            <th scope="col">24h Volume</th>
+            <th scope="col">Market Cap</th>
+        </tr>
+    </thead>
+    <tbody *ngFor='let c of message.response; let i = index'>
+        <tr>
+            <td>{{i+1}}</td>
+            <td class="name_image">
+                <!-- <span><img class='icon' src="{{c.image.thumb}}" alt="coin icon"></span> -->
+                <img class='icon' src="{{c.image.thumb}}" alt="coin icon">
+                <p>{{c.name}} <span class="symbol">{{c.symbol.toUpperCase()}}</span></p>
+            </td>
+            <td>${{c.market_data.current_price.usd}}</td>
+            <td [ngClass]="c.market_data.price_change_percentage_1h_in_currency.usd > 0 ? 'green': 'red' ">
+                {{c.market_data.price_change_percentage_1h_in_currency.usd | number : '1.1-1'}}%</td>
+            <td [ngClass]="c.market_data.price_change_percentage_24h_in_currency.usd > 0 ? 'green': 'red' ">
+                {{c.market_data.price_change_percentage_24h_in_currency.usd | number : '1.1-1'}}%
+            <td [ngClass]="c.market_data.price_change_percentage_7d_in_currency.usd > 0 ? 'green': 'red' ">
+                {{c.market_data.price_change_percentage_7d_in_currency.usd | number : '1.1-1'}}%</td>
+            <td>${{c.market_data.total_volume.usd.toLocaleString("en-US")}}</td>
+            <td>${{c.market_data.market_cap.usd.toLocaleString("en-US")}}</td>
+            <!-- <td>
+                <img loading="lazy" width="135" height="50" alt="bitcoin (BTC) 7d chart" src="https://www.coingecko.com/coins/1/sparkline">            
+            </td> -->
+        </tr>
+    </tbody>
+</table>
+
+<!-- 
+<td>{{c.image.thumb}}</td>
+<td>{{c.image.thumb.slice(42)}}</td> 
+    future half solution for displaying image chart 
+    this gets rid of all the text behind the numbers to 
+    put inside in the url for image
+-->

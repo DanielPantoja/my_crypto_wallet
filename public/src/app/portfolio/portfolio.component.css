@@ -1,0 +1,41 @@
+*{
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;;
+}
+.header-icon{
+    vertical-align: center;
+    padding: 0;
+    width: 5%;
+    height: 5%;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.container{
+    display: flex;
+    align-items: center;
+}
+.portfolio-container{
+    display: flex;
+    gap: 1rem;
+    /* flex-direction: row; */
+}
+.box{
+    height: 5rem;
+    width: 10rem;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+.box p{
+    text-align: center;
+}
+.bar{
+    display: flex;
+    gap: 80%;
+    align-items: center;
+}
+button{
+    height: 2.5rem;
+    width: 8rem;
+}

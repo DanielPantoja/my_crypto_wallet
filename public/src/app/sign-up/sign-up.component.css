@@ -1,0 +1,64 @@
+h1, p{
+    color: white!important;
+}
+button{
+    margin: auto;
+    color: black!important;
+    border: 2px solid black;
+    background-color: white!important;
+}
+h1 {
+    text-align: center;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+button {
+    margin: auto;
+}
+.main{
+    width: 500px;
+    /* width: 700px;
+    height: 500px; */
+
+    border-radius: 1px;
+    margin: auto;
+}
+.mat-dialog-container{
+    width: 500px;
+    height: 500px;
+
+}
+.mat-dialog-actions{
+    margin: 0;
+    padding: 0;
+}
+#closeBtn{
+    margin: 0;
+    padding: 0;
+}
+h1{
+    text-align: left;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+label{
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+input{
+    color: white;
+    height: 2.5rem;
+    margin-bottom: 3rem;
+    border: 1px solid #636363;
+    border-radius: 1px;
+    background-color: #272727;
+}
+.submit{
+    height: 2.5rem;
+    width: 100%;
+    margin-bottom: 3rem;
+    border: 1px solid #636363;
+    border-radius: 1px;
+}

@@ -1,0 +1,76 @@
+table{
+    border-collapse: collapse;
+    /* border: 1px solid black; */
+    display: table;
+    margin: auto;
+    width: 75%;
+}
+thead{
+    border-top: .5px solid black;
+    border-bottom: .5px solid black;
+}
+td{
+    text-align: center;
+    /* color: green; */
+}
+td p{
+    font-weight: 600;
+}
+tr{
+    border-bottom: .5px solid black;
+}
+.name_image{
+    margin-left: 25%;
+    display: flex;
+}
+
+.icon{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 0;
+    margin-right: 0;
+    display: block;
+}
+.test{
+    color: green;
+}
+.red{
+    color: red;
+}
+.green{
+    color: green;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+nav p{
+    margin-left: left;
+}
+.labelHead{
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    height: 3.5rem;
+    background-color: white;
+}
+.header-icon{
+    vertical-align: center;
+    padding: 0;
+    width: 5%;
+    height: 5%;
+}
+.container{
+    display: flex;
+    align-items: center;
+}
+
+.symbol{
+    font-size: small;
+    color: #6A7280;
+}
+tbody :hover{
+    background-color: #ECECEC;
+    cursor: pointer;
+}
