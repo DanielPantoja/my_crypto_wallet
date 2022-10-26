@@ -90,10 +90,10 @@ module.exports = {
             },
     addCoin: (req, res) => {
         console.log("REQBODY", req.body)
-        CoinGeckoClient.coins.fetch(req.body.coin).then(coin => {
-            User.findByIdAndUpdate({ _id: req.body.userId }, { $push: { portfolio: coin }}).then(result => {
-                console.log('THIS WORKED FIRST TRY LETS GOOOOOOOO', result)
-            })
+        CoinGeckoClient.coins.fetch(req.body.coin).then(result => {
+            // User.findByIdAndUpdate({ _id: req.body.userId }, { $push: { portfolio: coin }}).then(result => {
+            // })
+            console.log('THIS IS MY RESULT',result)
         })
         .catch(err => {
             console.log('someting went wrong')

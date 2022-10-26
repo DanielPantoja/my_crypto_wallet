@@ -12,8 +12,9 @@ export class PortfolioFormComponent implements OnInit {
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: { userId: string }, public dialogRef: MatDialogRef<PortfolioFormComponent>, private httpService: HttpService){}
     uId: any = null;
-    coins: Array<string> = [];
-    favoriteCoins: Array<string> = [];
+    // coins: Array<string> = [];
+
+    coins: any
 
     ngOnInit(): void{
         this.uId = this.data.userId
@@ -22,7 +23,9 @@ export class PortfolioFormComponent implements OnInit {
     getData(){
         let obs = this.httpService.secondServicFunctionTest()
         obs.subscribe((response: any) => {
-            this.coins = response.response.map((c: any) => c.name,)
+            // this.coins = response.response.map((c: any) => c.name)
+            this.coins = response.response.map((c: any) => ({ name: c.name, id: c.id }))
+            console.log('COINS', this.coins)
         })
     }
     closeForm(){
@@ -32,13 +35,12 @@ export class PortfolioFormComponent implements OnInit {
     }
     addCoin(form: NgForm){
         console.log('FORM',form.form.controls)
-        console.log('FORM',form.form.value)
-        this.favoriteCoins.push(form.value.coins)
-        console.log('Favorite Coins', this.favoriteCoins)
-        // let obs = this.httpService.addCoin(form.value.coin);
-        // obs.subscribe(() => {
-        //     this.dialogRef.close()
-        //     this.getUserData();
-        // })
+        console.log('FORM2',form.form.value)
+        // let coin = form.form.value.coins
+        let coin = form.form.value.coins
+        let obs = this.httpService.addCoin(coin);
+        obs.subscribe(() => {
+            this.dialogRef.close()
+        })
     }
 }

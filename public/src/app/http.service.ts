@@ -108,10 +108,11 @@ signUp(newUser: any) {
             }
         })
     }
-    addCoin(coin: string){
-        console.log('COIN ID', coin)
-        console.log('USERID', localStorage.getItem('userId'))
-        const apiData = { coin: coin, userId: localStorage.getItem('userId') }
+    addCoin(coinData: any ){
+        console.log('COIN ID', coinData)
+        let userId = localStorage.getItem('userId')
+        const apiData = { coin: coinData, userId: userId }
+        console.log('API DATA', apiData)
         return this._http.post('/api/addCoin', apiData)
     }
 }

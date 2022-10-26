@@ -9,14 +9,11 @@
         <form (submit)='addCoin(coinForm)' #coinForm='ngForm'>
             <label for="coins">Coin</label>
             <select ngModel name="coins" id="coins">
-                <option *ngFor='let c of coins' ngModel type='text' value='{{c}}' name='sample' #sampleInput='ngModel' sample>{{c}}</option>
+                <option *ngFor='let c of coins' ngModel type='text' value='{{c.id}}' name='coin' #sampleInput='ngModel' coin>{{c.name}}</option>
             </select>
             <label for="Quantity">Quantity</label>
             <input name='Quantity'type="number" placeholder="0" min="0">
             <button class='submit' type="submit">Enter</button>
         </form>
     </div>
-</div>
-<div *ngFor='let f of favoriteCoins'>
-<p>{{f}}</p>
 </div>
