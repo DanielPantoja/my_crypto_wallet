@@ -3,6 +3,7 @@ const CoinGeckoClient = new CoinGecko();
 const mongoose = require('mongoose');
 require('../models/user');//not sure if this is needed
 const User = mongoose.model('User');
+const Portfolio = mongoose.model('Portfolio')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -90,13 +91,18 @@ module.exports = {
             },
     addCoin: (req, res) => {
         console.log("REQBODY", req.body)
-        CoinGeckoClient.coins.fetch(req.body.coin).then(result => {
-            // User.findByIdAndUpdate({ _id: req.body.userId }, { $push: { portfolio: coin }}).then(result => {
-            // })
-            console.log('THIS IS MY RESULT',result)
-        })
+        // CoinGeckoClient.coins.fetch(req.body.coin).then(result => {
+            Portfolio.create({ coin:req.body.coin, quantity: 0, avgPrice: 0 }).then(asset => {
+                User.findByIdAndUpdate({ _id: req.body.userId }, { $push: { portfolio: asset }}).then(result => {
+                    console.log('result', result)
+                })
+                .catch(err => {
+                    console.log('updating user went wrong ')
+                })
+            })
         .catch(err => {
-            console.log('someting went wrong')
+            console.log(err)
+            console.log('creating asset went wrong')
         })
     }
 }

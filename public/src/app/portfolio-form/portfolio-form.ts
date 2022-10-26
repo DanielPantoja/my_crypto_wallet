@@ -11,13 +11,10 @@ import { HttpService } from '../http.service';
 export class PortfolioFormComponent implements OnInit {
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: { userId: string }, public dialogRef: MatDialogRef<PortfolioFormComponent>, private httpService: HttpService){}
-    uId: any = null;
-    // coins: Array<string> = [];
 
     coins: any
 
     ngOnInit(): void{
-        this.uId = this.data.userId
         this.getData();
     }
     getData(){
